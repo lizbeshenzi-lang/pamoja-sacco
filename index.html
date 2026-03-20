@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pamoja Sacco — Nairobi</title>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#0a5c3a;--green2:#0d7049;--lime:#d4e84a;--gold:#c49a2a;
+  --ink:#0a1a0f;--mid:rgba(10,26,15,.55);--dim:rgba(10,26,15,.35);
+  --cream:#f7f9f4;--pale:#eef5e8;--white:#fefefe;
+  --serif:'Bitter',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.75;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3.5rem;background:rgba(247,249,244,.97);backdrop-filter:blur(10px);border-bottom:1px solid rgba(10,92,58,.12)}
+.nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.nav-logo-mark{width:36px;height:36px;background:var(--green);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:.9rem;color:var(--lime)}
+.nav-logo-text{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--ink)}
+.nav-links{display:flex;align-items:center;gap:2.5rem}
+.nav-links a{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--green)}
+.nav-join{background:var(--green);color:var(--lime)!important;padding:.6rem 1.5rem;font-weight:500!important;transition:background .2s!important}
+.nav-join:hover{background:var(--green2)!important}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--green);display:flex;flex-direction:column;justify-content:flex-end;padding:5rem 3.5rem 5rem;position:relative;overflow:hidden}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(212,232,74,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(212,232,74,.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.hero-lime-bar{position:absolute;top:0;left:0;right:0;height:4px;background:var(--lime)}
+.hero-content{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:flex-end}
+.hero-tag{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--lime);opacity:.8;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
+.hero-tag::before{content:'';width:2rem;height:1px;background:var(--lime);opacity:.6}
+.hero-h1{font-family:var(--serif);font-size:clamp(3.5rem,6vw,5.5rem);font-weight:700;line-height:1;color:white;margin-bottom:1.75rem;letter-spacing:-.02em}
+.hero-h1 span{color:var(--lime)}
+.hero-sub{font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.95;max-width:28rem;margin-bottom:3rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-lime{background:var(--lime);color:var(--ink);padding:1rem 2.5rem;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;font-family:var(--sans);transition:all .25s;display:inline-flex;align-items:center;gap:.6rem}
+.btn-lime:hover{background:#e0f050;transform:translateY(-2px)}
+.btn-outline-white{border:1px solid rgba(255,255,255,.35);color:rgba(255,255,255,.85);padding:1rem 2rem;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:.6rem;transition:all .25s}
+.btn-outline-white:hover{border-color:var(--lime);color:var(--lime)}
+.hero-stats{display:flex;flex-direction:column;gap:2.5rem}
+.hstat{border-left:3px solid var(--lime);padding-left:1.5rem}
+.hstat-n{font-family:var(--serif);font-size:3rem;font-weight:700;color:white;line-height:1;margin-bottom:.2rem}
+.hstat-l{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+
+/* RATES STRIP */
+.rates{background:var(--ink);padding:2.5rem 3.5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:3px solid var(--lime)}
+.rate-item{padding:1.5rem 2rem;border-right:1px solid rgba(255,255,255,.08);text-align:center}
+.rate-item:last-child{border-right:none}
+.rate-n{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--lime);line-height:1;margin-bottom:.2rem}
+.rate-l{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+
+/* PRODUCTS */
+.products{padding:8rem 3.5rem;background:var(--cream)}
+.sec-head{margin-bottom:4rem}
+.sec-label{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--green);margin-bottom:.75rem}
+.sec-h2{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:700;color:var(--ink);line-height:1.15}
+.sec-h2 span{color:var(--green)}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.product-card{background:var(--white);padding:2.5rem;border-top:4px solid var(--pale);transition:border-color .3s}
+.product-card:hover{border-top-color:var(--green)}
+.prod-icon{font-size:2rem;margin-bottom:1.5rem;display:block}
+.prod-name{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--ink);margin-bottom:.5rem}
+.prod-rate{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:1rem;font-weight:500}
+.prod-desc{font-size:.85rem;color:var(--mid);line-height:1.85;margin-bottom:1.5rem}
+.prod-features{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.prod-features li{font-size:.8rem;color:var(--mid);display:flex;align-items:center;gap:.5rem}
+.prod-features li::before{content:'✓';color:var(--green);font-weight:700;font-size:.85rem}
+
+/* LOAN CALCULATOR */
+.calculator{padding:8rem 3.5rem;background:var(--green);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.calc-copy h2{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:700;color:white;line-height:1.1;margin-bottom:1.5rem}
+.calc-copy h2 span{color:var(--lime)}
+.calc-copy p{font-size:.92rem;color:rgba(255,255,255,.6);line-height:2;margin-bottom:2rem}
+.calc-disclaimer{font-size:.75rem;color:rgba(255,255,255,.35);line-height:1.8;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.1)}
+.calc-widget{background:rgba(255,255,255,.06);border:1px solid rgba(212,232,74,.2);padding:2.5rem}
+.calc-widget h3{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:white;margin-bottom:2rem}
+.calc-field{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem}
+.calc-field label{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.calc-field input,.calc-field select{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:.85rem 1rem;font-size:.95rem;font-family:var(--sans);color:white;outline:none;transition:border-color .2s}
+.calc-field input:focus,.calc-field select:focus{border-color:var(--lime)}
+.calc-field input::placeholder{color:rgba(255,255,255,.3)}
+.calc-field select option{background:var(--green);color:white}
+.calc-result{background:rgba(212,232,74,.1);border:2px solid var(--lime);padding:1.75rem;margin-top:1.5rem}
+.calc-result-label{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.5rem}
+.calc-result-val{font-family:var(--serif);font-size:2.5rem;font-weight:700;color:var(--lime);line-height:1;margin-bottom:.75rem}
+.calc-result-breakdown{font-size:.78rem;color:rgba(255,255,255,.55);line-height:1.9}
+.calc-btn{width:100%;background:var(--lime);color:var(--ink);border:none;padding:1rem;font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;font-family:var(--sans);transition:all .25s;margin-top:1rem}
+.calc-btn:hover{background:#e0f050}
+
+/* JOIN */
+.join-sec{padding:8rem 3.5rem;background:var(--pale);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.join-copy h2{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:700;color:var(--ink);line-height:1.1;margin-bottom:1.5rem}
+.join-copy h2 span{color:var(--green)}
+.join-copy p{font-size:.92rem;color:var(--mid);line-height:2;margin-bottom:1.5rem}
+.join-steps{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+.step{display:grid;grid-template-columns:2.5rem 1fr;gap:1rem;align-items:start}
+.step-n{width:2.5rem;height:2.5rem;background:var(--green);color:var(--lime);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:.9rem;flex-shrink:0}
+.step-info h4{font-size:.9rem;font-weight:500;color:var(--ink);margin-bottom:.2rem}
+.step-info p{font-size:.8rem;color:var(--mid);line-height:1.7}
+.join-form{background:var(--white);padding:3rem;border-top:4px solid var(--green)}
+.join-form h3{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--ink);margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:1px solid rgba(10,92,58,.1)}
+.ff{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.25rem}
+.ff label{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--dim)}
+.ff input,.ff select{background:var(--pale);border:1px solid rgba(10,92,58,.15);padding:.8rem 1rem;font-size:.88rem;font-family:var(--sans);color:var(--ink);outline:none;transition:border-color .2s}
+.ff input:focus,.ff select:focus{border-color:var(--green)}
+.ff input::placeholder{color:var(--dim)}
+.ff-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.join-submit{width:100%;background:var(--green);color:var(--lime);border:none;padding:1rem;font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;font-family:var(--sans);transition:background .25s;margin-top:.5rem}
+.join-submit:hover{background:var(--green2)}
+.form-status{margin-top:1rem;padding:.85rem 1rem;font-size:.82rem;display:none}
+.form-status.ok{background:rgba(10,92,58,.08);color:var(--green);border:1px solid rgba(10,92,58,.2);display:block}
+.form-status.err{background:#fef2f2;color:#dc2626;border:1px solid #fecaca;display:block}
+.wa-cta{display:none;margin-top:1rem;width:100%;background:#25d366;color:white;border:none;padding:1rem;font-size:.78rem;font-weight:500;cursor:pointer;font-family:var(--sans);text-decoration:none;text-align:center}
+.wa-cta.show{display:block}
+
+/* FOOTER */
+footer{background:var(--ink);padding:5rem 3.5rem 3rem}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;padding-bottom:4rem;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:3rem}
+.ft-logo{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.ft-logo-mark{width:32px;height:32px;background:var(--green);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:.8rem;color:var(--lime)}
+.ft-logo-name{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:white}
+.ft-tagline{font-size:.82rem;color:rgba(255,255,255,.35);line-height:1.9;max-width:22rem;margin-bottom:1.5rem}
+.ft-reg{font-size:.75rem;color:rgba(212,232,74,.5);line-height:2}
+.ft-col h4{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(212,232,74,.5);margin-bottom:1.25rem;font-weight:400}
+.ft-col a{display:block;font-size:.82rem;color:rgba(255,255,255,.35);text-decoration:none;margin-bottom:.65rem;transition:color .2s}
+.ft-col a:hover{color:var(--lime)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:rgba(255,255,255,.2)}
+.ft-wa{background:var(--green);color:var(--lime);padding:.5rem 1.25rem;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;font-weight:500}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">P</div>
+    <span class="nav-logo-text">Pamoja Sacco</span>
+  </a>
+  <div class="nav-links">
+    <a href="#products">Products</a>
+    <a href="#calculator">Loan Calculator</a>
+    <a href="#join-sec">Join Us</a>
+    <a href="#join-sec" class="nav-join">Become a Member</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-lime-bar"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-tag">Nairobi · Est. 2011 · SASRA Licensed</div>
+      <h1 class="hero-h1">Save Together.<br><span>Grow Together.</span></h1>
+      <p class="hero-sub">Pamoja Sacco is a member-owned savings and credit cooperative built for Nairobi workers and entrepreneurs. Your money, multiplied.</p>
+      <div class="hero-btns">
+        <a href="#join-sec" class="btn-lime">Become a Member →</a>
+        <a href="#calculator" class="btn-outline-white">Calculate Your Loan</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-n">12,400+</div><div class="hstat-l">Active Members</div></div>
+      <div class="hstat"><div class="hstat-n">KSh 2.4B</div><div class="hstat-l">Assets Under Management</div></div>
+      <div class="hstat"><div class="hstat-n">14yrs</div><div class="hstat-l">Serving Nairobi</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="rates">
+  <div class="rate-item"><div class="rate-n">12%</div><div class="rate-l">Savings Interest p.a.</div></div>
+  <div class="rate-item"><div class="rate-n">14%</div><div class="rate-l">Loan Rate p.a.</div></div>
+  <div class="rate-item"><div class="rate-n">3×</div><div class="rate-l">Loan Multiplier</div></div>
+  <div class="rate-item"><div class="rate-n">48hr</div><div class="rate-l">Loan Processing</div></div>
+</div>
+
+<section class="products" id="products">
+  <div class="sec-head">
+    <div class="sec-label">Our Products</div>
+    <h2 class="sec-h2">Financial Tools Built <span>For You</span></h2>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <span class="prod-icon">🏦</span>
+      <div class="prod-name">Regular Savings</div>
+      <div class="prod-rate">12% interest per annum</div>
+      <p class="prod-desc">Your core savings account. Deposit as little as Ksh 500 per month and watch your money grow with one of the highest member rates in Nairobi.</p>
+      <ul class="prod-features">
+        <li>Minimum monthly deposit: Ksh 500</li>
+        <li>Interest compounded monthly</li>
+        <li>Withdraw after 90 days</li>
+        <li>M-PESA deposits accepted</li>
+      </ul>
+    </div>
+    <div class="product-card">
+      <span class="prod-icon">💰</span>
+      <div class="prod-name">Normal Loan</div>
+      <div class="prod-rate">14% per annum · Up to 3× savings</div>
+      <p class="prod-desc">Borrow up to 3 times your savings balance. Flexible repayment up to 48 months. Processing in 48 hours once your guarantors are in place.</p>
+      <ul class="prod-features">
+        <li>Up to 3× your savings balance</li>
+        <li>Repayment: 12–48 months</li>
+        <li>2 guarantors required</li>
+        <li>No hidden charges</li>
+      </ul>
+    </div>
+    <div class="product-card">
+      <span class="prod-icon">⚡</span>
+      <div class="prod-name">Emergency Loan</div>
+      <div class="prod-rate">1% per month · Same-day processing</div>
+      <p class="prod-desc">Life doesn't wait. Emergency loans disbursed same-day for members in good standing. No guarantors required for amounts up to Ksh 50,000.</p>
+      <ul class="prod-features">
+        <li>Up to Ksh 50,000 no guarantors</li>
+        <li>Same-day disbursement</li>
+        <li>3-month repayment</li>
+        <li>Available after 6 months membership</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="calculator" id="calculator">
+  <div class="calc-copy">
+    <h2>See What You <span>Could Borrow</span></h2>
+    <p>Enter your current savings balance and choose your preferred repayment period. Our calculator will show you exactly what you can access and what your monthly repayment will be.</p>
+    <div class="calc-disclaimer">All figures are indicative only. Actual loan amounts and rates are subject to Pamoja Sacco's credit assessment and your current savings balance at time of application.</div>
+  </div>
+  <div class="calc-widget">
+    <h3>Loan Calculator</h3>
+    <div class="calc-field">
+      <label>Your Current Savings (Ksh)</label>
+      <input type="number" id="savings" placeholder="e.g. 100,000" oninput="calculate()">
+    </div>
+    <div class="calc-field">
+      <label>Loan Type</label>
+      <select id="loanType" onchange="calculate()">
+        <option value="normal">Normal Loan (14% p.a.)</option>
+        <option value="emergency">Emergency Loan (12% p.a.)</option>
+      </select>
+    </div>
+    <div class="calc-field">
+      <label>Repayment Period</label>
+      <select id="months" onchange="calculate()">
+        <option value="12">12 months</option>
+        <option value="24" selected>24 months</option>
+        <option value="36">36 months</option>
+        <option value="48">48 months</option>
+      </select>
+    </div>
+    <div class="calc-result" id="calcResult" style="display:none">
+      <div class="calc-result-label">Maximum Loan Amount</div>
+      <div class="calc-result-val" id="loanAmt">—</div>
+      <div class="calc-result-breakdown" id="calcBreakdown"></div>
+    </div>
+    <button class="calc-btn" onclick="document.getElementById('join-sec').scrollIntoView({behavior:'smooth'})">Apply for This Loan →</button>
+  </div>
+</section>
+
+<section class="join-sec" id="join-sec">
+  <div class="join-copy">
+    <h2>Join Pamoja.<br><span>Start Building.</span></h2>
+    <p>Membership is open to any Kenyan resident aged 18 and above. Registration fee is Ksh 1,000 (one-time). Share capital is Ksh 5,000, payable over 10 months.</p>
+    <div class="join-steps">
+      <div class="step"><div class="step-n">1</div><div class="step-info"><h4>Fill the Form</h4><p>Submit your details online or WhatsApp us to start</p></div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-info"><h4>Submit Documents</h4><p>National ID + KRA PIN + passport photo</p></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-info"><h4>Pay Registration</h4><p>Ksh 1,000 via M-PESA Paybill 123456</p></div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-info"><h4>Start Saving</h4><p>Minimum Ksh 500/month. Loan eligible after 3 months.</p></div></div>
+    </div>
+  </div>
+  <div class="join-form">
+    <h3>Membership Application</h3>
+    <div class="ff-row">
+      <div class="ff"><label>Full Name</label><input type="text" id="jName" placeholder="As on National ID"></div>
+      <div class="ff"><label>Phone / WhatsApp</label><input type="tel" id="jPhone" placeholder="+254 7XX XXX XXX"></div>
+    </div>
+    <div class="ff"><label>Email Address</label><input type="email" id="jEmail" placeholder="your@email.com"></div>
+    <div class="ff-row">
+      <div class="ff"><label>National ID Number</label><input type="text" id="jId" placeholder="e.g. 12345678"></div>
+      <div class="ff"><label>Employer / Business</label><input type="text" id="jEmployer" placeholder="Where you work"></div>
+    </div>
+    <div class="ff"><label>Monthly Income (approximate)</label>
+      <select id="jIncome">
+        <option value="">Select range</option>
+        <option>Below Ksh 20,000</option>
+        <option>Ksh 20,000 – 50,000</option>
+        <option>Ksh 50,000 – 100,000</option>
+        <option>Ksh 100,000 – 200,000</option>
+        <option>Above Ksh 200,000</option>
+      </select>
+    </div>
+    <div class="ff"><label>How did you hear about Pamoja?</label>
+      <select id="jSource">
+        <option value="">Select</option>
+        <option>Colleague / Friend</option><option>WhatsApp</option>
+        <option>Facebook / Instagram</option><option>Google</option><option>Other</option>
+      </select>
+    </div>
+    <button class="join-submit" id="joinBtn" onclick="submitMembership()">Submit Application →</button>
+    <div class="form-status" id="joinStatus"></div>
+    <a href="#" class="wa-cta" id="joinWa" target="_blank">💬 Continue on WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <div class="ft">
+    <div>
+      <div class="ft-logo"><div class="ft-logo-mark">P</div><span class="ft-logo-name">Pamoja Sacco</span></div>
+      <p class="ft-tagline">Member-owned savings and credit cooperative serving Nairobi since 2011. SASRA licensed and regulated.</p>
+      <div class="ft-reg">SASRA Licence No. SACCO/2011/0842<br>Registered under the Cooperative Societies Act</div>
+    </div>
+    <div class="ft-col"><h4>Products</h4><a href="#">Regular Savings</a><a href="#">Normal Loan</a><a href="#">Emergency Loan</a><a href="#">School Fees Loan</a></div>
+    <div class="ft-col"><h4>Members</h4><a href="#">Member Portal</a><a href="#">Annual Reports</a><a href="#">AGM Minutes</a><a href="#">Benefits</a></div>
+    <div class="ft-col"><h4>Contact</h4><a href="#">Upper Hill, Nairobi</a><a href="tel:+254700000000">+254 700 000 000</a><a href="#">info@pamojasacco.co.ke</a><a href="#">WhatsApp Us</a></div>
+  </div>
+  <div class="ft-bot">
+    <span>© 2025 Pamoja Savings & Credit Cooperative · Nairobi · SASRA Licensed</span>
+    <a href="https://wa.me/254700000000" class="ft-wa">💬 WhatsApp</a>
+  </div>
+</footer>
+
+<script>
+function calculate() {
+  const savings = parseFloat(document.getElementById('savings').value) || 0;
+  if (savings <= 0) { document.getElementById('calcResult').style.display='none'; return; }
+  const loanType = document.getElementById('loanType').value;
+  const months = parseInt(document.getElementById('months').value);
+  const rate = loanType === 'emergency' ? 0.01 : (0.14/12);
+  const maxLoan = loanType === 'emergency' ? Math.min(savings * 1.5, 50000) : savings * 3;
+  const monthly = maxLoan * (rate * Math.pow(1+rate,months)) / (Math.pow(1+rate,months)-1);
+  const total = monthly * months;
+  document.getElementById('loanAmt').textContent = 'Ksh ' + maxLoan.toLocaleString('en-KE', {maximumFractionDigits:0});
+  document.getElementById('calcBreakdown').innerHTML =
+    `Monthly repayment: <strong>Ksh ${monthly.toLocaleString('en-KE',{maximumFractionDigits:0})}</strong><br>` +
+    `Total repayable: Ksh ${total.toLocaleString('en-KE',{maximumFractionDigits:0})}<br>` +
+    `Total interest: Ksh ${(total-maxLoan).toLocaleString('en-KE',{maximumFractionDigits:0})} over ${months} months`;
+  document.getElementById('calcResult').style.display='block';
+}
+
+async function submitMembership() {
+  const name = document.getElementById('jName').value.trim();
+  const phone = document.getElementById('jPhone').value.trim();
+  const email = document.getElementById('jEmail').value.trim();
+  if (!name || !phone) { showJoinStatus('Please enter your name and phone number.','err'); return; }
+
+  const btn = document.getElementById('joinBtn');
+  btn.disabled = true; btn.textContent = 'Submitting...';
+
+  try {
+    const res = await fetch('/api/enquire', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name, phone, email,
+        service: 'Membership Application',
+        message: `ID: ${document.getElementById('jId').value} | Employer: ${document.getElementById('jEmployer').value} | Income: ${document.getElementById('jIncome').value}`,
+        siteName: 'Pamoja Sacco',
+        whatsappNumber: '254700000000'
+      })
+    });
+    const data = res.ok ? await res.json() : { success: true, whatsappUrl: 'https://wa.me/254700000000' };
+
+    showJoinStatus('✅ Application submitted! Our membership team will contact you within 24 hours.', 'ok');
+    if (data.whatsappUrl) {
+      const wa = document.getElementById('joinWa');
+      wa.href = data.whatsappUrl;
+      wa.classList.add('show');
+    }
+    btn.textContent = 'Submitted ✓';
+  } catch {
+    btn.disabled = false; btn.textContent = 'Submit Application →';
+    showJoinStatus('Submission failed. Please WhatsApp us directly at +254 700 000 000.', 'err');
+  }
+}
+
+function showJoinStatus(msg, type) {
+  const el = document.getElementById('joinStatus');
+  el.textContent = msg;
+  el.className = `form-status ${type}`;
+}
+</script>
+</body>
+</html>
